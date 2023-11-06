@@ -1,3 +1,6 @@
+# len(nums)
+# reassign the array from beginning
+# with the target number
 class Solution(object):
     def removeElement(self, nums, val):
         """
@@ -11,3 +14,6 @@ class Solution(object):
                 nums[index] = nums[i]
                 index += 1
         return index
+
+
+
