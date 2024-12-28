@@ -33,5 +33,22 @@ class Solution(object):
                     queue.append((new_x, new_y))
         return image
 
+        # original_color = image[sr][sc]
+        # m, n = len(image), len(image[0])
+        # visited = set()
+        #
+        # def dfs(i, j):
+        #     if i < 0 or i >= m or j < 0 or j >= n or (i, j) in visited or image[i][j] != original_color:
+        #         return
+        #     visited.add((i, j))
+        #     image[i][j] = color
+        #     for di, dj in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
+        #         ni, nj = di + i, dj + j
+        #         dfs(ni, nj)
+        #
+        # dfs(sr, sc)
+        #
+        # return image
+
 
 
