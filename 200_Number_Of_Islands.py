@@ -27,5 +27,30 @@ class Solution(object):
 
         return island
 
+    # m, n = len(grid), len(grid[0])
+    # visited = set()
+    # island = 0
+    #
+    # def bfs(x, y):
+    #     queue = deque([(x, y)])
+    #     visited.add((x, y))
+    #
+    #     while queue:
+    #         i, j = queue.popleft()
+    #         for di, dj in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
+    #             nx, ny = di + i, dj + j
+    #             if 0 <= nx < m and 0 <= ny < n and (nx, ny) not in visited and grid[nx][ny] == "1":
+    #                 visited.add((nx, ny))
+    #                 queue.append((nx, ny))
+    #
+    # for i in range(m):
+    #     for j in range(n):
+    #         if grid[i][j] == "1" and (i, j) not in visited:
+    #             island += 1
+    #             bfs(i, j)
+    #
+    # return island
+
+
 
 
