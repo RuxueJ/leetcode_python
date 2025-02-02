@@ -10,22 +10,23 @@ class Solution(object):
         :type x: int
         :rtype: Optional[ListNode]
         """
-        less = ListNode()
-        greater = ListNode()
-        less_pointer = less
-        greater_pointer = greater
+        slow_head = ListNode()
+        fast_head = ListNode()
 
-        cur_pointer = head
-        while cur_pointer:
-            if cur_pointer.val < x:
-                less_pointer.next = cur_pointer
-                less_pointer = cur_pointer
+        slow_pointer, fast_pointer = slow_head, fast_head
+
+        cur = head
+        while cur:
+            if cur.val < x:
+                slow_pointer.next = cur
+                slow_pointer = cur
             else:
-                greater_pointer.next = cur_pointer
-                greater_pointer = cur_pointer
-            cur_pointer = cur_pointer.next
+                fast_pointer.next = cur
+                fast_pointer = cur
+            cur = cur.next
 
-        greater_pointer.next = None
-        less_pointer.next = greater.next
-        return less.next
+        slow_pointer.next = fast_head.next
+        fast_pointer.next = None
+
+        return slow_head.next
 
