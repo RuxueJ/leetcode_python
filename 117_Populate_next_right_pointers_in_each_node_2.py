@@ -7,6 +7,7 @@ class Node:
         self.right = right
         self.next = next
 """
+from collections import deque
 
 
 class Solution:
