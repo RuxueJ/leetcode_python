@@ -10,10 +10,22 @@ class Solution(object):
         :type nums: List[int]
         :rtype: Optional[TreeNode]
         """
-        if not nums:
-            return None
-        mid_index = len(nums) // 2
-        node = TreeNode(nums[mid_index])
-        node.left = self.sortedArrayToBST(nums[:mid_index])
-        node.right = self.sortedArrayToBST(nums[mid_index + 1:])
-        return node
+
+        def helper(left, right):
+            if left > right:
+                return None
+            mid = left + (right - left) // 2
+            node = TreeNode(nums[mid])
+            node.left = helper(left, mid - 1)
+            node.right = helper(mid + 1, right)
+
+            return node
+
+        return helper(0, len(nums) - 1)
+        # if not nums:
+        #     return None
+        # mid_index = len(nums) // 2
+        # node = TreeNode(nums[mid_index])
+        # node.left = self.sortedArrayToBST(nums[:mid_index])
+        # node.right = self.sortedArrayToBST(nums[mid_index + 1:])
+        # return node
