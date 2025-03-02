@@ -1,32 +1,35 @@
-class Solution(object):
-    def searchRange(self, nums, target):
-        """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
-        """
-        i = 0
-        j = len(nums) - 1
-        while (i <= j and nums[i] != target and nums[j] != target):
-            middle = (i + j) / 2
-            if (nums[middle] > target):
-                j = middle - 1
-            elif (nums[middle] < target):
-                i = middle + 1
-            else:
-                i += 1
-                j -= 1
+from typing import List
 
-        if (i > j):
-            return [-1, -1]
 
-        if nums[i] == target:
-            while (nums[j] != target):
-                j -= 1
-        if nums[j] == target:
-            while (nums[i] != target):
-                i += 1
+class Solution:
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
 
-        return [i, j]
+        def find(isLeft):
+
+            bound = -1
+
+            left, right = 0, len(nums) - 1
+            while left <= right:
+                mid = (left + right) // 2
+                if nums[mid] == target:
+                    bound = mid
+                    if isLeft:
+                        right = mid - 1
+                    else:
+                        left = mid + 1
+
+                elif nums[mid] < target:
+                    left = mid + 1
+                else:
+                    right = mid - 1
+
+            return bound
+
+        start = find(True)
+        end = find(False)
+
+        return [start, end]
+
+
 
 
