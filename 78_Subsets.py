@@ -25,7 +25,7 @@ class Solution(object):
 
         return result
 
-    result = []
+        # result = []
 
         # def backtrack(start, path):
         #     result.append(path[:])  # Add the current subset (copy to avoid mutation)
