@@ -10,7 +10,7 @@ class Solution(object):
             if(nums[i] != nums[i+1]):
                 nums[index] = nums[i]
                 index += 1
-        nums[index] = nums[-1]
+        c
         index += 1
         return index
 
