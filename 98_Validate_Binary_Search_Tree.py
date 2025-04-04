@@ -1,32 +1,65 @@
 # Definition for a binary tree node.
-# class TreeNode(object):
+class TreeNode(object):
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+# class Solution(object):
+    # def isValidBST(self, root):
+    #     """
+    #     :type root: Optional[TreeNode]
+    #     :rtype: bool
+    #     """
+    #     self.prev = float('-inf')
+    #     self.result = True
+    #
+    #     def dfs(node):
+    #
+    #         if not node or self.result == False:
+    #             return
+    #
+    #         dfs(node.left)
+    #
+    #         if node.val <= self.prev:
+    #             self.result = False
+    #         else:
+    #             self.prev = node.val
+    #
+    #         dfs(node.right)
+    #
+    #     dfs(root)
+    #
+    #     return self.result
+
+# Definition for a binary tree node.
+# class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
 #         self.val = val
 #         self.left = left
 #         self.right = right
-class Solution(object):
-    def isValidBST(self, root):
-        """
-        :type root: Optional[TreeNode]
-        :rtype: bool
-        """
-        self.prev = float('-inf')
-        self.result = True
+class Solution:
+    def isValidBST(self, root: Optional[TreeNode]) -> bool:
 
-        def dfs(node):
+        pre = float('-inf')
 
-            if not node or self.result == False:
-                return
+        def traverse(node):
+            nonlocal pre
 
-            dfs(node.left)
+            if not node:
+                return True
 
-            if node.val <= self.prev:
-                self.result = False
+            if not traverse(node.left):
+                return False
+
+            if node.val > pre:
+                pre = node.val
             else:
-                self.prev = node.val
+                return False
 
-            dfs(node.right)
+            return traverse(node.right)
 
-        dfs(root)
+        return traverse(root)
 
-        return self.result
+
+
+
